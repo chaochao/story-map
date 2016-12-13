@@ -6,6 +6,7 @@ function navBar(){
     restrict: 'E',
     templateUrl: 'angular-app/directives/navBar.html',
     controller: 'LoginController',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    replace: true
   };
 };
