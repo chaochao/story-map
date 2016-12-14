@@ -1,4 +1,13 @@
-<p>Map</p>
-
-<p>{{name}}</p>
-<p>{{vm.name}}</p>
+<div class="row">
+  {{name}}
+  <div class="col-lg-12">
+    <!-- 地址输入框 -->
+    <div class="form-group">
+      <label class="control-label">地址：</label>
+      <input class="form-control input-md" name="address" ng-model="address"/>
+    </div>
+    <!-- 百度地图显示区域 -->
+    <div class="form-group" id="bdmap" style="width: 100%;height: 500px;"></div>
+  </div>
+  
+</div>
