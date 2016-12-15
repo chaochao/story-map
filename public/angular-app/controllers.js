@@ -1,7 +1,21 @@
 console.log("controller");
 storyMap.controller('MainController', ['$scope', function($scope) {
   var self = this;
-  $scope.title = "Main"
+
+  $scope.title = "Main";
+  console.log($)
+  i18n
+    .init({
+      detectLngQS: 'lang',
+      resGetPath: 'locales/__lng__/__ns__.json'
+    })
+    .done(function() { 
+      $('[data-i18n]').i18n();
+      var appName = $.t("app.name");
+      console.log(appName);
+    });
+
+
 }])
 
 

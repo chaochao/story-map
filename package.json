@@ -13,8 +13,10 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.13.3",
+    "i18next": "^4.1.1",
     "jsonwebtoken": "^7.2.0",
-    "mongoose": "^4.7.0"
+    "mongoose": "^4.7.0",
+    "ng-i18next": "^1.0.4"
   },
   "author": "",
   "license": "ISC"
