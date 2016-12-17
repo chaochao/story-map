@@ -10,3 +10,12 @@ function navBar(){
     replace: true
   };
 };
+
+storyMap.directive('register', register);
+function register(){
+  return {
+    restrict: 'E',
+    templateUrl: 'angular-app/directives/register.html',
+    replace: true
+  };
+};
