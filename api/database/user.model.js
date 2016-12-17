@@ -12,6 +12,14 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   description: String,
+  Follows:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  }],
+  Followers:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  }],
   avatar: String,
   location: {
     address: String,

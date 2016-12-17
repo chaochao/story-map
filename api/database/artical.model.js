@@ -1,7 +1,29 @@
 var mongoose = require('mongoose');
 
-var articalSchema = mongoose.Schema({
+var commentSchema = new mongoose.Schema({
   author:{
+    id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User"
+      },
+      username: String
+  },
+  content:{
+    type: String,
+    required: true
+  },
+  likes: Number
+})
+
+var articalSchema = new mongoose.Schema({
+  author:{
+     id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User"
+      },
+      username: String
+  },
+  title: {
     type: String,
     required: true
   },
@@ -9,6 +31,9 @@ var articalSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  comments:[commentSchema],
+  likes: Number,
+  dislikes: Number,
   tags:[String],
   location:{
     contry: String,
@@ -22,3 +47,4 @@ var articalSchema = mongoose.Schema({
   }
 });
 mongoose.model("Artical",articalSchema);
+mongoose.model("Comment",commentSchema);

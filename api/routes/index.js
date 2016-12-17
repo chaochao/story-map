@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var ctrlUsers = require('../controllers/users.controller.js');
+var ctrlArticals = require('../controllers/articals.controller.js');
 router
   .route('/')
   .get(function(req,res){
@@ -23,10 +24,13 @@ router
   .route('/login')
   .post(ctrlUsers.login);
 
-// get articles
-
-//get reviews
-
+// articles
+router
+  .route('/articals')
+  .get(ctrlArticals.getAll);
+router
+  .route('/articals/new')
+  .post(ctrlArticals.createOne);  
 
 
 module.exports = router;
