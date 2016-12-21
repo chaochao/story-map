@@ -28,9 +28,15 @@ router
 router
   .route('/articals')
   .get(ctrlArticals.getAll);
+
 router
   .route('/articals/new')
   .post(ctrlArticals.createOne);  
 
+router
+  .route('/articals/:id')
+  .get(ctrlArticals.getOne)
+  .put(ctrlArticals.editOne)
+  .delete(ctrlArticals.deleteOne);
 
 module.exports = router;

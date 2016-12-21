@@ -7,9 +7,6 @@ function routes($routeProvider){
     templateUrl:'angular-app/pages/main.html',
     controller: 'MainController'
   })
-  .when('/another', {
-    templateUrl:'angular-app/pages/another.html'
-  })
   .when('/map', {
     templateUrl:'angular-app/pages/map.html',
     controller: 'MapController as vm'

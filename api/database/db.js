@@ -5,6 +5,7 @@ var env = process.env.NODE_ENV || "development"
 dburl = env === 'development' ? dburl : process.env.databaseUrl
 
 mongoose.connect(dburl);
+mongoose.Promise = global.Promise;
 // event indicators
 mongoose.connection.on('connected',function(){
   console.log("Mongodb connected to: "+ dburl);

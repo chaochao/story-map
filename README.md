@@ -8,3 +8,5 @@ Angularjs & nodejs
 * toolkit files are a style files based on bootstrap
 * not sure why the path start from #!, while for angular it should be #
 * databse will be mongodb and use mongoose lib.
+========
+* need to rethink about layout of pages
