@@ -59,3 +59,22 @@ module.exports.login = function(req, res) {
       }
     });
 }
+
+module.exports.getAll = function(req, res){
+  var limit = parseInt(req.query.limit) || 10
+  var offset = parseInt(req.query.offset) || 0
+  User
+  .find()
+  .skip(offset)
+  .limit(limit)
+  .exec(function(err, users){
+    if(err){
+      console.log(err);
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(users);
+    }
+
+  });
+
+}

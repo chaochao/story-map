@@ -1,8 +1,11 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({
+  mergeParams: true
+});
 
 var ctrlUsers = require('../controllers/users.controller.js');
 var ctrlArticals = require('../controllers/articals.controller.js');
+var ctrlComment = require('../controllers/comment.controller.js');
 router
   .route('/')
   .get(function(req,res){
@@ -12,9 +15,7 @@ router
 
 router
   .route('/users')
-  .get(function(req,res){
-    res.json({message: "this is users router"});
-  });
+  .get(ctrlUsers.getAll);
 
 router
   .route('/register')
@@ -39,4 +40,8 @@ router
   .put(ctrlArticals.editOne)
   .delete(ctrlArticals.deleteOne);
 
+router
+  .route('/articals/:id/comments')
+  .get(ctrlComment.getAllForOne)
+  .post(ctrlComment.createOne);
 module.exports = router;
