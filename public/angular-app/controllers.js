@@ -28,7 +28,7 @@ function LoginController() {
 
 storyMap.controller('MapController', MapController);
 
-function MapController($scope) {
+function MapController($scope, $http) {
   var self = this;
   $scope.name = "scope map";
   self.name = "self map";
@@ -49,6 +49,20 @@ function MapController($scope) {
 
   self.submitArtical = function(){
     console.log("click");
+    console.log(self.newArticalTitle);
+    console.log(self.newArticalContent);
+    var newArtical ={
+      title: self.newArticalTitle,
+      content: self.newArticalContent
+    }
+    $http.post('/api/articals/new', newArtical).then(function(res){
+      console.log(res);
+      self.newArticalTitle =''
+      self.newArticalContent = ''
+    }).catch(function(e){
+      console.log(e);
+    });
+
   } 
 
 }

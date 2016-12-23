@@ -174,8 +174,8 @@
       <div class="container edit w-full">
         <div>author info</div>
           <form class="input-group w-full" ng-submit="vm.submitArtical()">
-            <input type="textarea" class="form-control" placeholder="title">
-            <input type="textarea" class="form-control">
+            <input type="textarea" class="form-control" ng-model ="vm.newArticalTitle" placeholder="title">
+            <input type="textarea" class="form-control" ng-model ="vm.newArticalContent">
             <button type="submit" class="btn btn-xs btn-pill btn-primary" >submit</button>
           </form>
           
