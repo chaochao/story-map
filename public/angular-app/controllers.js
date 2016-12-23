@@ -47,6 +47,10 @@ function MapController($scope) {
     console.log(pt);
   });
 
+  self.submitArtical = function(){
+    console.log("click");
+  } 
+
 }
 
 storyMap.controller('PlaygroundController', PlaygroundController);
