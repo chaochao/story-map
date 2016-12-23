@@ -27,7 +27,8 @@ var userSchema = new mongoose.Schema({
       type:[Number],
       index: '2dsphere'
     }
-  }
+  },
+  created_at: { type: Date, default: Date.now }
 });
 
 mongoose.model('User',userSchema);
