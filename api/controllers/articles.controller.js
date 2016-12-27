@@ -1,21 +1,24 @@
 var mongoose = require('mongoose');
-var Artical = mongoose.model('Artical');
+var Article = mongoose.model('Article');
 
 //get all
 module.exports.getAll = function(req, res) {
     // res.send('this is get all');
     var limit = parseInt(req.query.limit) || 10
     var offset = parseInt(req.query.offset) || 0
-    Artical
+    Article
       .find()
+      .sort({
+        'created_at':'asc'
+      })
       .skip(offset)
       .limit(limit)
-      .exec(function(err, articals) {
+      .exec(function(err, articles) {
         if (err) {
           console.log(err);
           res.status(500).json(err);
         } else {
-          res.status(200).json(articals);
+          res.status(200).json(articles);
         }
       });
 
@@ -30,8 +33,8 @@ module.exports.createOne = function(req, res) {
         message: "please provide title and content."
       })
     } else {
-      var newArtical = req.body;
-      Artical.create(newArtical, function(err, art) {
+      var newArticle = req.body;
+      Article.create(newArticle, function(err, art) {
         if (err) {
           res.status(500).json(err);
         } else {
@@ -46,14 +49,14 @@ module.exports.getOne = function(req, res) {
   console.log(req.params);
   console.log(req.query);
   var id = req.params.id;
-  Artical
+  Article
     .findById(id)
-    .exec(function(err, artical) {
+    .exec(function(err, article) {
       if (err) {
         console.log(err);
         res.status(500).json(err);
       } else {
-        res.status(200).json(artical);
+        res.status(200).json(article);
       }
     });
 };
@@ -62,15 +65,15 @@ module.exports.getOne = function(req, res) {
 module.exports.editOne = function(req, res) {
     // res.send("this is edit")
     var id = req.params.id;
-    Artical
+    Article
       .findByIdAndUpdate(id, req.body, {
         new: true
-      }, function(err, newArtical) {
+      }, function(err, newArticle) {
         if (err) {
           console.log(err);
           res.status(500).json(err);
         } else {
-          res.status(200).json(newArtical);
+          res.status(200).json(newArticle);
         }
       });
 
@@ -79,7 +82,7 @@ module.exports.editOne = function(req, res) {
   //delete one
 module.exports.deleteOne = function(req, res) {
   var id = req.params.id;
-  Artical
+  Article
     .findByIdAndRemove(id, function(err){
       if (err) {
         console.log(err);

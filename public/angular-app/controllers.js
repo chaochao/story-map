@@ -28,11 +28,11 @@ function LoginController() {
 
 storyMap.controller('MapController', MapController);
 
-function MapController($scope, $http) {
+function MapController($scope, $http, articleService) {
   var self = this;
   $scope.name = "scope map";
   self.name = "self map";
-  $scope.map = new BMap.Map("bdmap"); 
+  $scope.map = new BMap.Map("bdmap");
   
   $scope.map.centerAndZoom(new BMap.Point(104.06, 30.67), 11);  // 初始化地图,设置中心点坐标和地图级别
   var point = new BMap.Point(104.06, 30.67);  
@@ -46,25 +46,38 @@ function MapController($scope, $http) {
     var pt =e.point;
     console.log(pt);
   });
+  articleService.getAll().then(function(res){
+    $scope.articles = res.data;
+    console.log(res.data);
+  });
+    
 
-  self.submitArtical = function(){
+  // $http.get('/api/articles').then(function(res){
+  //   $scope.articlas = res.data;
+  //   console.log($scope.articlas);
+
+  // })
+  // .catch(function(err){
+  //   console.log(err);
+  // });
+
+  // move this to article service
+  self.submitArticle = function(){
     console.log("click");
-    console.log(self.newArticalTitle);
-    console.log(self.newArticalContent);
-    var newArtical ={
-      title: self.newArticalTitle,
-      content: self.newArticalContent
+    console.log(self.newArticleTitle);
+    console.log(self.newArticleContent);
+    var newArticle ={
+      title: self.newArticleTitle,
+      content: self.newArticleContent
     }
-    $http.post('/api/articals/new', newArtical).then(function(res){
+    $http.post('/api/articles/new', newArticle).then(function(res){
       console.log(res);
-      self.newArticalTitle =''
-      self.newArticalContent = ''
+      self.newArticleTitle =''
+      self.newArticleContent = ''
     }).catch(function(e){
       console.log(e);
     });
-
   } 
-
 }
 
 storyMap.controller('PlaygroundController', PlaygroundController);

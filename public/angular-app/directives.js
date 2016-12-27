@@ -19,3 +19,15 @@ function register(){
     replace: true
   };
 };
+
+storyMap.directive('article', article);
+function article(){
+  return {
+    restrict: 'E',
+    templateUrl:'angular-app/directives/article.html',
+    replace: true,
+    scope:{
+      atcl: "="
+    }
+  }
+}

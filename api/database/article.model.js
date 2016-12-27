@@ -16,7 +16,7 @@ var commentSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
 })
 
-var articalSchema = new mongoose.Schema({
+var articleSchema = new mongoose.Schema({
   author:{
      id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -48,5 +48,5 @@ var articalSchema = new mongoose.Schema({
     }
   }
 });
-mongoose.model("Artical",articalSchema);
+mongoose.model("Article",articleSchema);
 mongoose.model("Comment",commentSchema);

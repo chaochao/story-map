@@ -10,3 +10,5 @@ Angularjs & nodejs
 * databse will be mongodb and use mongoose lib.
 ========
 * need to rethink about layout of pages
+* all http calls put in services, some async issue
+* spelling issue...

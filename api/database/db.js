@@ -41,4 +41,4 @@ process.once('SIGUSR2', function(){
 });
 // import models
 require('./user.model.js');
-require('./artical.model.js');
+require('./article.model.js');

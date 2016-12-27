@@ -1,33 +1,33 @@
 var mongoose = require('mongoose');
 var Comment = mongoose.model('Comment');
-var Artical = mongoose.model('Artical');
+var Article = mongoose.model('Article');
 
-function addComment(req, res, artical){
+function addComment(req, res, article){
   // auther info can get from req
-  artical.comments.push({
+  article.comments.push({
     author:{
       id: req.body.id,
       username:req.body.username
     },
     content: req.body.content
   })
-  artical.save(function(err,articalUpdated){
+  article.save(function(err,articleUpdated){
     if(err){
       res.status(500).send(err);
     } else {
       res.status(200)
-      .json(articalUpdated.comments[articalUpdated.comments.length-1]);
+      .json(articleUpdated.comments[articleUpdated.comments.length-1]);
     }
   });
 }
 
 module.exports.getAllForOne = function(req, res){
-  var articalId = req.params.id;
-  Artical
-    .findById(articalId)
+  var articleId = req.params.id;
+  Article
+    .findById(articleId)
     .select('comments')
-    .then(function(artical){
-      res.status(200).json(artical.comments);
+    .then(function(article){
+      res.status(200).json(article.comments);
     })
     .catch(function(err){
       console.log(err);
@@ -36,11 +36,11 @@ module.exports.getAllForOne = function(req, res){
 }
 
 module.exports.createOne = function(req, res){
-  var articalId = req.params.id;
-  Artical
-    .findById(articalId)
-    .then(function(artical){
-      addComment(req,res, artical);
+  var articleId = req.params.id;
+  Article
+    .findById(articleId)
+    .then(function(article){
+      addComment(req,res, article);
     })
     .catch(function(err){
       console.log(err);

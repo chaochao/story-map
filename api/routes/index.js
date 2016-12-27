@@ -4,7 +4,7 @@ var router = express.Router({
 });
 
 var ctrlUsers = require('../controllers/users.controller.js');
-var ctrlArticals = require('../controllers/articals.controller.js');
+var ctrlArticles = require('../controllers/articles.controller.js');
 var ctrlComment = require('../controllers/comment.controller.js');
 router
   .route('/')
@@ -27,21 +27,21 @@ router
 
 // articles
 router
-  .route('/articals')
-  .get(ctrlArticals.getAll);
+  .route('/articles')
+  .get(ctrlArticles.getAll);
 
 router
-  .route('/articals/new')
-  .post(ctrlArticals.createOne);  
+  .route('/articles/new')
+  .post(ctrlArticles.createOne);  
 
 router
-  .route('/articals/:id')
-  .get(ctrlArticals.getOne)
-  .put(ctrlArticals.editOne)
-  .delete(ctrlArticals.deleteOne);
+  .route('/articles/:id')
+  .get(ctrlArticles.getOne)
+  .put(ctrlArticles.editOne)
+  .delete(ctrlArticles.deleteOne);
 
 router
-  .route('/articals/:id/comments')
+  .route('/articles/:id/comments')
   .get(ctrlComment.getAllForOne)
   .post(ctrlComment.createOne);
 module.exports = router;
