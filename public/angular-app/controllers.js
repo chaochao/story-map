@@ -1,22 +1,9 @@
 console.log("controller");
 storyMap.controller('MainController', ['$scope', function($scope) {
   var self = this;
-
   $scope.title = "Main";
   console.log($)
-  // i18n
-  //   .init({
-  //     detectLngQS: 'lang',
-  //     resGetPath: 'locales/__lng__/__ns__.json'
-  //   })
-  //   .done(function() { 
-  //     $('[data-i18n]').i18n();
-  //     var appName = $.t("app.name");
-  //     console.log(appName);
-  //   });
-
-
-}])
+}]);
 
 
 storyMap.controller('LoginController', LoginController);
@@ -87,4 +74,23 @@ function PlaygroundController($scope) {
   $scope.name = "play";
   $('.images').imageGrid()
 }
+
+storyMap.controller('ArticleController', ArticleController);
+
+function ArticleController($scope) {
+  var self= this;
+  $scope.showComment = false;
+  $scope.like = false;
+  $scope.toggleComment = function() {
+      $scope.showComment = $scope.showComment === false ? true: false;
+  };
+  $scope.toggleLike = function() {
+    //also need to add to article
+    $scope.like = $scope.like === false ? true: false;
+  };
+
+
+}
+
+
 

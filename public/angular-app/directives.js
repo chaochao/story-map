@@ -25,6 +25,8 @@ function article(){
   return {
     restrict: 'E',
     templateUrl:'angular-app/directives/article.html',
+    controller: 'ArticleController',
+    controllerAs: 'vm',
     replace: true,
     scope:{
       atcl: "="
