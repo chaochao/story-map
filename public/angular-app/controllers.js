@@ -15,7 +15,7 @@ function LoginController() {
 
 storyMap.controller('MapController', MapController);
 
-function MapController($scope, $http, articleService) {
+function MapController($scope, $http, $route, articleService) {
   var self = this;
   $scope.name = "scope map";
   self.name = "self map";
@@ -49,6 +49,7 @@ function MapController($scope, $http, articleService) {
       console.log(res);
       self.newArticleTitle = ''
       self.newArticleContent = ''
+      $route.reload();
     }).catch(function(e) {
       console.log(e);
     });
@@ -65,7 +66,7 @@ function PlaygroundController($scope) {
 
 storyMap.controller('ArticleController', ArticleController);
 
-function ArticleController($scope, $http) {
+function ArticleController($scope, $http, $route) {
   var self = this;
 
   $scope.showComment = false;
@@ -79,15 +80,13 @@ function ArticleController($scope, $http) {
   };
 
   $scope.submitComment = function() {
-    console.log($scope.atcl._id);
-    console.log($scope.newComment);
     var commentUrl = '/api/articles/' + $scope.atcl._id + '/comments'
     var newC = {
       content: $scope.newComment
     }
     $http.post(commentUrl, newC).then(function(res) {
       $scope.newComment = '';
-      //here we can reload the page ?
+      $route.reload();
     }).catch(function(e) {
       console.log(e);
     });
