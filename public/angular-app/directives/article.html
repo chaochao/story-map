@@ -14,19 +14,13 @@
       {{atcl.content}}
     </p>
     <div>
-      <a class="comment" href="" name="addcomment" ng-click="toggleComment()">
+      <a class="comment" href="" name="addcomment" ng-click="toggleComment()"></a>
       <span class="icon icon-popup"></span>comment</a>
       <a class="comment" href="" name="like" ng-click="toggleLike()">
         <span class="icon" ng-class="{'icon-heart':like,'icon-heart-outlined':!like}"></span>like</a>
-    </div>
-
-    <ul ng-show="showComment" class="media-list m-t m-b">     
-      
-
-
-
-      <li class="m-t m-b" ng-repeat="comment in atcl.comments">
-        
+      </div>
+      <ul ng-show="showComment" class="media-list m-t m-b">
+        <li class="m-t m-b" ng-repeat="comment in atcl.comments">
           <a class="media-left" href="#">
             <img
             class="media-object img-circle"
@@ -34,26 +28,19 @@
           </a>
           <div class="media-body">
             <strong>author info </strong>
-              {{comment.content}}
+            {{comment.content}}
           </div>
-        
-      </li>
-
-
-
-
-
-
-      <li>
-        <div class="input-group">
+        </li>
+        <li>
+          <div class="input-group">
             <input type="text" class="form-control" placeholder="your comment...">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default">
-                <span class="icon icon-edit"></span>
+              <span class="icon icon-edit"></span>
               </button>
             </div>
           </div>
-      </li> 
-    </ul>
-  </div>
-</li>
+        </li>
+      </ul>
+    </div>
+  </li>
