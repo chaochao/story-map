@@ -33,8 +33,8 @@
         </li>
         <li>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="your comment...">
-            <div class="input-group-btn">
+            <input type="text" class="form-control" ng-model="newComment" placeholder="your comment...">
+            <div class="input-group-btn" ng-click="submitComment()" >
               <button type="button" class="btn btn-default">
               <span class="icon icon-edit"></span>
               </button>
