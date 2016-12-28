@@ -19,36 +19,41 @@
       <a class="comment" href="" name="like" ng-click="toggleLike()">
         <span class="icon" ng-class="{'icon-heart':like,'icon-heart-outlined':!like}"></span>like</a>
     </div>
-    
-    
+
+    <ul ng-show="showComment" class="media-list m-t m-b">     
+      
 
 
 
-
-
-    <ul ng-show="showComment" class="media-list m-b">
-      <li class="media">
-        <a class="media-left" href="#">
-          <img
-          class="media-object img-circle"
-          src="assets/img/avatar-fat.jpg">
-        </a>
-        <div class="media-body">
-          <strong>Jacon Thornton: </strong>
-          Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-        </div>
+      <li class="m-t m-b" ng-repeat="comment in atcl.comments">
+        
+          <a class="media-left" href="#">
+            <img
+            class="media-object img-circle"
+            src="assets/img/avatar-mdo.png">
+          </a>
+          <div class="media-body">
+            <strong>author info </strong>
+              {{comment.content}}
+          </div>
+        
       </li>
-      <li class="media">
-        <a class="media-left" href="#">
-          <img
-          class="media-object img-circle"
-          src="assets/img/avatar-mdo.png">
-        </a>
-        <div class="media-body">
-          <strong>Mark Otto: </strong>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </div>
-      </li>
+
+
+
+
+
+
+      <li>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="your comment...">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default">
+                <span class="icon icon-edit"></span>
+              </button>
+            </div>
+          </div>
+      </li> 
     </ul>
   </div>
 </li>
