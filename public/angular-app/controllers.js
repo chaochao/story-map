@@ -91,4 +91,21 @@ function ArticleController($scope, $http, $route) {
       console.log(e);
     });
   }
+
+  $scope.deleteComment = function(commentId) {
+    var articleId = $scope.atcl._id;
+    console.log(articleId);
+    console.log(commentId);
+    $scope.atcl.comments.forEach(function(comment,index){
+      if(comment._id === commentId){
+        $scope.atcl.comments.splice(index,1);
+      }
+    });
+    // remove from the back end
+
+
+  }
+
+
+
 }

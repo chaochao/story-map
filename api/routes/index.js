@@ -44,4 +44,7 @@ router
   .route('/articles/:id/comments')
   .get(ctrlComment.getAllForOne)
   .post(ctrlComment.createOne);
+router
+  .route('/articles/:id/comments/:commentId')
+  .delete(ctrlComment.deleteOne);
 module.exports = router;

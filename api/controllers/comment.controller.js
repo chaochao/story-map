@@ -48,3 +48,37 @@ module.exports.createOne = function(req, res){
     });
 
 }
+
+module.exports.deleteOne = function(req, res){
+  var articleId = req.params.id;
+  var commentId = req.params.commentId;
+  console.log("delete comment");
+  console.log(articleId);
+  console.log(commentId);
+
+  Article
+  .findById(articleId)
+  .then(function(article){
+    var comment = article.comments.id(commentId);
+    if(!comment){
+      res.status(404).json({message:'no such comment'});
+    } else{
+      comment.remove();
+      article.save(function(err, articleNoComment){
+        if(err){
+          console.log(err);
+          res.status(500).json(err);
+        } else {
+          res.status(204).json();
+        }
+      });
+    }
+  })
+  .catch(function(err){
+    console.log(err);
+    res.status(500).json(err);
+  });
+
+
+
+}
