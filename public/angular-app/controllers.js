@@ -37,7 +37,7 @@ function MapController($scope, $http, $route, articleService) {
     console.log(res.data);
   });
 
-  self.submitArticle = function() {
+  $scope.submitArticle = function() {
     console.log("click");
     console.log(self.newArticleTitle);
     console.log(self.newArticleContent);
@@ -53,6 +53,22 @@ function MapController($scope, $http, $route, articleService) {
     }).catch(function(e) {
       console.log(e);
     });
+  }
+
+  $scope.deleteArticle = function(articleId){
+    console.log(articleId);
+    var articleUrl = '/api/articles/' + articleId;
+    $http.delete(articleUrl).then(function(res){
+      console.log("article deleted");
+      $scope.articles.forEach(function(article,index){
+        if(article._id === articleId){
+          $scope.articles.splice(index,1);
+        }
+      });    
+    }).catch(function(e){
+      console.log(e);
+    });
+    
   }
 }
 
@@ -86,7 +102,7 @@ function ArticleController($scope, $http, $route) {
     }
     $http.post(commentUrl, newC).then(function(res) {
       $scope.newComment = '';
-      $route.reload();
+      $route.reload(); // TODO: add into scope 
     }).catch(function(e) {
       console.log(e);
     });
@@ -96,16 +112,20 @@ function ArticleController($scope, $http, $route) {
     var articleId = $scope.atcl._id;
     console.log(articleId);
     console.log(commentId);
-    $scope.atcl.comments.forEach(function(comment,index){
-      if(comment._id === commentId){
-        $scope.atcl.comments.splice(index,1);
-      }
-    });
+    
     // remove from the back end
-
-
+    var commentUrl = '/api/articles/' + $scope.atcl._id + '/comments/' +commentId;
+    $http.delete(commentUrl).then(function(res){
+      console.log(res);
+      console.log('deleted');
+      $scope.atcl.comments.forEach(function(comment,index){
+        if(comment._id === commentId){
+          $scope.atcl.comments.splice(index,1);
+        }
+      });  
+    }).catch(function(e){
+      console.log(e);
+    });
   }
-
-
 
 }

@@ -19,31 +19,32 @@
       <a class="comment" href="" name="like" ng-click="toggleLike()">
         <span class="icon" ng-class="{'icon-heart':like,'icon-heart-outlined':!like}"></span>like
       </a>
-      </div>
-      <ul ng-show="showComment" class="media-list m-t m-b">
-        <li class="m-t m-b" id="{{comment._id}}" ng-repeat="comment in atcl.comments">
-          <a class="media-left" href="#">
-            <img
-            class="media-object img-circle"
-            src="assets/img/avatar-mdo.png">
-          </a>
-          <div class="media-body">
-            <strong>author info </strong>
-            {{comment.content}}
-            <a href="" ng-click="deleteComment(comment._id)">Delete</a>
-          </div>
-
-        </li>
-        <li>
-          <div class="input-group">
-            <input type="text" class="form-control" ng-model="newComment" placeholder="your comment...">
-            <div class="input-group-btn" ng-click="submitComment()" >
-              <button type="button" class="btn btn-default">
-              <span class="icon icon-edit"></span>
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <a href="" ng-click="deleteArticle({articleId: atcl._id})">Delete</a>
     </div>
-  </li>
+    <ul ng-show="showComment" class="media-list m-t m-b">
+      <li class="m-t m-b" id="{{comment._id}}" ng-repeat="comment in atcl.comments">
+        <a class="media-left" href="#">
+          <img
+          class="media-object img-circle"
+          src="assets/img/avatar-mdo.png">
+        </a>
+        <div class="media-body">
+          <strong>author info </strong>
+          {{comment.content}}
+          <a href="" ng-click="deleteComment(comment._id)">Delete</a>
+        </div>
+
+      </li>
+      <li>
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="newComment" placeholder="your comment...">
+          <div class="input-group-btn" ng-click="submitComment()" >
+            <button type="button" class="btn btn-default">
+            <span class="icon icon-edit"></span>
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</li>

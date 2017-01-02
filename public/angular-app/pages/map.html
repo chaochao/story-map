@@ -58,7 +58,7 @@
         </li>
 
         <li ng-repeat="atcl in articles">
-          <article atcl="atcl" ></article>
+          <article atcl="atcl" delete-article="deleteArticle(articleId)" ></article>
         </li>
        
 
@@ -118,7 +118,7 @@
       </ul>
       <div class="container edit w-full">
         <div>author info</div>
-          <form class="input-group w-full" ng-submit="vm.submitArticle()">
+          <form class="input-group w-full" ng-submit="submitArticle()">
             <input type="textarea" class="form-control" ng-model ="vm.newArticleTitle" placeholder="title">
             <textarea row= "4" type="textarea" class=" w-full form-control" ng-model ="vm.newArticleContent" placeholder="your story..."></textarea>
             <button type="submit" class="btn btn-xs btn-pill btn-primary" >Post</button>

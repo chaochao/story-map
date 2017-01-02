@@ -29,7 +29,8 @@ function article(){
     controllerAs: 'vm',
     replace: true,
     scope:{
-      atcl: "="
+      atcl: "=",
+      deleteArticle: "&"
     }
   }
 }
