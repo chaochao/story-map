@@ -38,7 +38,7 @@ var articleSchema = new mongoose.Schema({
   dislikes: Number,
   tags:[String],
   location:{
-    contry: String,
+    country: String,
     state: String,
     city: String,
     zip: String,
