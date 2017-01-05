@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 
 module.exports.register = function(req, res) {
   if (!req.body.username || !req.body.password) {
-    es.status(400).json({
+    res.status(400).json({
       message: "please provide username and password"
     });
     return;

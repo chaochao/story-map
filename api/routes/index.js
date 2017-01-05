@@ -5,7 +5,7 @@ var router = express.Router({
 
 var ctrlUsers = require('../controllers/users.controller.js');
 var ctrlArticles = require('../controllers/articles.controller.js');
-var ctrlComment = require('../controllers/comment.controller.js');
+var ctrlComment = require('../controllers/comments.controller.js');
 router
   .route('/')
   .get(function(req,res){
